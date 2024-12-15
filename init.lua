@@ -247,6 +247,17 @@ require('lazy').setup({
     ---@type render.md.UserConfig
     opts = { latex = { enabled = false } },
   },
+  --  {
+  --    'iamcco/markdown-preview.nvim',
+  --    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+  --    build = 'cd app && yarn install',
+  --    init = function()
+  --      vim.g.mkdp_filetypes = { 'markdown' }
+  --    end,
+  --   ft = { 'markdown' },
+  --    mkdp_browser = '/usr/bin/firefox',
+  --    opts = {},
+  --  },
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
   --    require('gitsigns').setup({ ... })
