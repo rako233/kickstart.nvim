@@ -62,4 +62,8 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- NOTE: Set python provider
+-- g:loaded_python3_provider = 1
+vim.g.python3_host_prog = '/home/rako/.pyenv/versions/nvim/bin/python3'
+
 -- vim: ts=2 sts=2 sw=2 et
