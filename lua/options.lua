@@ -66,4 +66,7 @@ vim.opt.scrolloff = 10
 -- g:loaded_python3_provider = 1
 vim.g.python3_host_prog = '/home/rako/.pyenv/versions/nvim/bin/python3'
 
+-- NOTE: Perl
+vim.g.loaded_perl_provider = 0
+
 -- vim: ts=2 sts=2 sw=2 et
