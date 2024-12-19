@@ -99,6 +99,9 @@ require 'options'
 -- [[ Basic Keymaps ]]
 require 'keymaps'
 
+-- [[ Misc Functions ]]
+-- require 'misc'
+
 -- [[ Basic Autocommands ]]
 require 'autocommands'
 
