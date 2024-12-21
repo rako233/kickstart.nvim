@@ -6,6 +6,4 @@ so I modularized the awesome work made by TJ.
 
 The git repo is
 
-A starting point for Neovim that is:
-
 [https://github.com/rako233/nvim](https://github.com/rako233/nvim)
