@@ -57,7 +57,6 @@ return {
       -- of another class. The result is stored in a new group
       --@param hl_fg string : The highlight name of the highlight class
       --@param hl_bg string : The highlight name of a highlight class
-      --@return boolean
       local make_color = function(hl_fg, hl_bg)
         ---@class vim.api.keyset.highlight
         local fghl = vim.api.nvim_get_hl(0, { name = hl_fg })
@@ -66,7 +65,6 @@ return {
         fghl.bg = bghl.bg
         fghl.force = true
         vim.api.nvim_set_hl(0, hl_fg .. '2', fghl)
-        return true
       end
 
       statusline.setup {
@@ -101,7 +99,7 @@ return {
               { hl = 'MiniStatuslineDevinfo', strings = { git, diff, diagnostics, lsp } },
               { hl = 'MiniStatuslineDevinfo2', strings = { '█' } },
               '%<', -- Mark general truncate point
-              { hl = 'MiniStatuslineFilename', strings = { filename } },
+              { hl = 'MiniStatuslineFilename', strings = { ' ', filename, ' ' } },
               '%=', -- End left alignment
               { hl = 'MiniStatuslineFileinfo2', strings = { '█' } },
               { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
