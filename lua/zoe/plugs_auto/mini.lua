@@ -91,22 +91,44 @@ return {
             make_color('MiniStatuslineDevinfo', 'MiniStatuslineFilename')
             make_color('MiniStatuslineFileInfo', 'MiniStatuslineFilename')
 
-            return combine_groups {
+            local tab = {
               { hl = mode_hl, strings = { mode } },
               { hl = mode_hl .. '2', strings = { '█' } },
               '%<', -- Mark general truncate point
-              { hl = 'MiniStatuslineDevinfo2', strings = { '█' } },
-              { hl = 'MiniStatuslineDevinfo', strings = { git, diff, diagnostics, lsp } },
-              { hl = 'MiniStatuslineDevinfo2', strings = { '█' } },
-              '%<', -- Mark general truncate point
-              { hl = 'MiniStatuslineFilename', strings = { ' ', filename, ' ' } },
-              '%=', -- End left alignment
-              { hl = 'MiniStatuslineFileinfo2', strings = { '█' } },
-              { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
-              { hl = 'MiniStatuslineFileinfo2', strings = { '█' } },
-              { hl = mode_hl .. '2', strings = { '█' } },
-              { hl = mode_hl, strings = { search, location } },
             }
+            if table.concat({ git, diff, diagnostics, lsp }):len() > 0 then
+              table.insert(tab, { hl = 'MiniStatuslineDevinfo2', strings = { '█' } })
+              table.insert(tab, { hl = 'MiniStatuslineDevinfo', strings = { git, diff, diagnostics, lsp } })
+              table.insert(tab, { hl = 'MiniStatuslineDevinfo2', strings = { '█' } })
+              table.insert(tab, '%<') -- Mark general truncate point
+            end
+            table.insert(tab, { hl = 'MiniStatuslineFilename', strings = { ' ', filename, ' ' } })
+            table.insert(tab, '%=')
+            if fileinfo:len() > 0 then
+              table.insert(tab, { hl = 'MiniStatuslineFileinfo2', strings = { '█' } })
+              table.insert(tab, { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } })
+              table.insert(tab, { hl = 'MiniStatuslineFileinfo2', strings = { '█' } })
+            end
+
+            table.insert(tab, { hl = mode_hl .. '2', strings = { '█' } })
+            table.insert(tab, { hl = mode_hl, strings = { search, location } })
+            return combine_groups(tab)
+            -- return combine_groups {
+            --   { hl = mode_hl, strings = { mode } },
+            --   { hl = mode_hl .. '2', strings = { '█' } },
+            --   '%<', -- Mark general truncate point
+            --   { hl = 'MiniStatuslineDevinfo2', strings = { '█' } },
+            --   { hl = 'MiniStatuslineDevinfo', strings = { git, diff, diagnostics, lsp } },
+            --   { hl = 'MiniStatuslineDevinfo2', strings = { '█' } },
+            --   '%<', -- Mark general truncate point
+            --   { hl = 'MiniStatuslineFilename', strings = { ' ', filename, ' ' } },
+            --   '%=', -- End left alignment
+            --   { hl = 'MiniStatuslineFileinfo2', strings = { '█' } },
+            --   { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
+            --   { hl = 'MiniStatuslineFileinfo2', strings = { '█' } },
+            --   { hl = mode_hl .. '2', strings = { '█' } },
+            --   { hl = mode_hl, strings = { search, location } },
+            -- }
           end,
           -- Content for inactive window(s)
           inactive = nil,
