@@ -1,7 +1,7 @@
 return {
   {
     'iamcco/markdown-preview.nvim',
-    enabled = true,
+    enabled = false,
     cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
     build = 'cd app && yarn install',
     config = function()
