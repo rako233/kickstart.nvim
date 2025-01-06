@@ -1,29 +1,30 @@
 return {
   {
     'rmagatti/auto-session',
+    enabled = true,
     lazy = false,
-    ---@module 'auto-session'
-    ---@type AutoSession.Config
-    opts = {
-      suppressed_dirs = { 'node_modules', '.git', '.config' },
-      auto_save = true,
-      auto_create = true,
-      auto_restore = true,
-      auto_restore_last_session = false,
-      use_git_branch = false,
-      lazy_support = true,
-      bypass_save_filetypes = {},
-      close_unsupported_windows = true,
-      args_allow_single_directory = true,
-      args_allow_files_autosave = false,
-      continue_restore_on_error = true,
-      show_auto_restore_notif = false,
-      cwd_change_handling = false,
-      lsp_stop_on_restore = false,
-      log_level = 'error',
-      session_lens = {
-        load_on_setup = true,
-      },
-    },
+    config = function()
+      require('auto-session').setup {
+        enabled = true,
+        log_level = 'error',
+        suppressed_dirs = { 'node_modules', '.git', '~/Download', 'tmp' },
+        session_lens = {
+          load_on_setup = true,
+          buftypes_to_ignore = { 'nofile', 'prompt' },
+          theme_conf = {
+            border = true,
+            position = 'bottom',
+            -- width = 80,
+            -- height = 16,
+          },
+          previewer = false,
+        },
+        vim.keymap.set('n', '<leader>0s', '<cmd>SessionSave<CR> ', { noremap = true, desc = '[s]ave session' }),
+        vim.keymap.set('n', '<leader>0r', '<cmd>SessionRestore<CR> ', { noremap = true, desc = 'session [r]estore' }),
+        vim.keymap.set('n', '<leader>0\\', '<cmd>SessionSearch<CR> ', { noremap = true, desc = '[\\] search session' }),
+        vim.keymap.set('n', '<leader>0p', '<cmd>SessionPurgeOrphaned<CR> ', { noremap = true, desc = 'session [p]urge orphaned' }),
+        vim.keymap.set('n', '<leader>0d', '<cmd>Autosession delete<CR> ', { noremap = true, desc = 'session [d]elete' }),
+      }
+    end,
   },
 }
