@@ -85,17 +85,17 @@ return {
           -- Content for active window
           active = function()
             mode, mode_hl = MiniStatusline.section_mode { trunc_width = 50 }
-            local git = MiniStatusline.section_git { trunc_width = 40 }
-            local diff = MiniStatusline.section_diff { trunc_width = 50 }
-            local diagnostics = MiniStatusline.section_diagnostics { trunc_width = 80 }
-            local lsp = MiniStatusline.section_lsp { trunc_width = 40 }
-            local filename = MiniStatusline.section_filename { trunc_width = 80 }
-            local fileinfo = MiniStatusline.section_fileinfo { trunc_width = 50 }
+            local git = MiniStatusline.section_git { trunc_width = 50 }
+            local diff = MiniStatusline.section_diff { trunc_width = 100 }
+            local diagnostics = MiniStatusline.section_diagnostics { trunc_width = 100 }
+            local lsp = MiniStatusline.section_lsp { trunc_width = 100 }
+            local filename = MiniStatusline.section_filename { trunc_width = 140 }
+            local fileinfo = MiniStatusline.section_fileinfo { trunc_width = 100 }
             -- local location = MiniStatusline.section_location { trunc_width = 50 }
-            local search = MiniStatusline.section_searchcount { trunc_width = 50 }
+            local search = MiniStatusline.section_searchcount { trunc_width = 100 }
 
             local tab = {
-              { hl = mode_hl, strings = { mode } },
+              { hl = mode_hl, strings = { ' ' .. mode } },
               { hl = mode_hl .. '2', strings = { '█' } },
               '%<', -- Mark general truncate point
             }
@@ -114,7 +114,7 @@ return {
             end
 
             table.insert(tab, { hl = mode_hl .. '2', strings = { '█' } })
-            table.insert(tab, { hl = mode_hl, strings = { search, '%2l:%-2v' } })
+            table.insert(tab, { hl = mode_hl, strings = { search, '%2l:%-2v ' } })
             return combine_groups(tab)
           end,
           -- Content for inactive window(s)
