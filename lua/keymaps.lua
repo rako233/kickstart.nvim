@@ -33,4 +33,22 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 vim.keymap.set('n', '<leader>pp', '<cmd>!uv run main.py<CR>', { desc = 'Start python main function' })
 
+-- Map ESC to :q only for read-only buffers
+vim.api.nvim_create_augroup('ReadOnlyEscExit', { clear = true })
+vim.api.nvim_create_autocmd('BufReadPost', {
+  group = 'ReadOnlyEscExit',
+  callback = function()
+    if vim.bo.readonly then
+      vim.api.nvim_buf_set_keymap(0, 'n', '<Esc>', ':q<CR>', { noremap = true, silent = true })
+    end
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'man',
+  callback = function()
+    vim.api.nvim_buf_set_keymap(0, 'n', '<Esc>', ':quit<CR>', { noremap = true, silent = true })
+  end,
+})
+
 -- vim: ts=2 sts=2 sw=2 et
