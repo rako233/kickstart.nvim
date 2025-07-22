@@ -10,7 +10,7 @@
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
-
+  -- { import = 'zoe.plugs_auto01' },
   { import = 'zoe.plugs_auto' },
 }, {
   ui = require 'zoe.plugs.ui',

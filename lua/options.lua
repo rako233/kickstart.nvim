@@ -64,7 +64,7 @@ vim.opt.scrolloff = 10
 
 -- NOTE: Set python provider
 -- g:loaded_python3_provider = 1
-vim.g.python3_host_prog = '/home/rako/.pyenv/versions/nvim/bin/python3'
+vim.g.python3_host_prog = '/home/rako/.pyenv/shims/python3'
 
 -- NOTE: Perl
 vim.g.loaded_perl_provider = 0
