@@ -670,6 +670,7 @@ require('lazy').setup({
       servers['html-lsp'] = {}
       servers['yaml-language-server'] = {}
       servers['bash-language-server'] = {}
+      servers['markdownlint-cli2'] = {}
 
       -- Ensure the servers and tools above are installed
       --
@@ -913,7 +914,7 @@ require('lazy').setup({
         'javascript',
         'json',
         'markdown',
-        'markdown_inline',
+        -- 'markdown_inline',
         'lua',
         'luadoc',
         'python',
@@ -959,7 +960,7 @@ require('lazy').setup({
   --
   -- require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
-  require 'kickstart.plugins.lint',
+  -- require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
